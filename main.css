@@ -1,124 +1,444 @@
-*{
-    margin:0px;
-    padding:0px;
-    font-family: "Phudu", serif;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.navbar{
-    display:inline-block;
-    width:100%;
-    height:auto;
-    background-color:#000;
-    color:#fff;
-    padding:20px;
+body {
+    font-family: "Phudu", system-ui, sans-serif;
+    background: linear-gradient(135deg, #050505 0%, #1a1a1a 100%);
+    color: #fff;
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-.navbar h1,h2,span{
-    display: inline;
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    background: rgba(17, 17, 17, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(245, 198, 35, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
-.navbar h1{
-    padding-left:10px;
-    font-size: 30px;
+
+.navbar-brand h1 {
+    font-size: 2rem;
+    background: linear-gradient(45deg, #fff, #f5c623);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
-.navbar span{
-    font-weight:400;
-    font-size: medium;
+
+.navbar-brand span {
+    color: #f5c623;
+    font-weight: 900;
 }
-.navbar h2{
+
+.navbar-brand h2 {
+    font-size: 1rem;
+    font-weight: 300;
+    opacity: 0.8;
+    margin-top: 0.2rem;
+}
+
+.navbar img {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    
+}
+
+.navbar img:hover {
+    transform: translateY(-10px) scale(1.1);
    
-    padding-left:65%;
-    font-style:italic;
-    font-weight:200;
-    font-size: medium;
 }
+
 .intro {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-top: 10px;
-    padding: 10px;
-    width: 100%;
-    height: 400px;
-    color: #fff;
-    background-color: #000;
-    box-sizing: border-box;
+    gap: 3rem;
+    padding: 4rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .intro-content {
-    width: 50%;
-    padding: 20px;
+    flex: 1;
 }
 
-.intro h1 {
-    margin-bottom: 10px;
-    font-size: 50px;
+.intro-content h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    background: linear-gradient(45deg, #f5c623, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
 }
 
-.intro p {
-    font-size: 16px;
-    line-height: 1.5;
+.intro-content p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 500px;
 }
 
 .intro-image {
-    width: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    flex: 1;
+    text-align: center;
 }
 
 .intro-image img {
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    height: 400px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 2rem;
+    transition: all 0.6s ease;
+    
 }
 
+.intro-image img:hover {
+    transform: scale(1.05);
+    
+}
+@media (max-width: 768px)  {
+    .intro-image{
+        display: none;
+    }
+}
+@media (max-width: 480px)  {
+    .intro-image{
+        display: none;
+    }
+}
 .car-boxes {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto 4rem;
+    padding: 0 2rem 2rem;
 }
 
 .car-box {
-    height:350px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    background: rgba(21, 21, 21, 0.8);
+    backdrop-filter: blur(20px);
+    border-radius: 2rem;
+    padding: 3rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(245, 198, 35, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.car-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #f5c623, transparent);
+    transform: scaleX(0);
+    transition: transform 0.5s ease;
+}
+
+.car-box:hover::before {
+    transform: scaleX(1);
+}
+
+.car-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 30px rgba(245, 198, 35, 0.2);
+    border-color: rgba(245, 198, 35, 0.3);
 }
 
 .car-content {
-    
-    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 1rem;
+}
+
+.car-content h3 {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    background: linear-gradient(45deg, #f5c623, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.car-content p strong {
+    color: #f5c623;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.car-content > p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.95;
+    line-height: 1.7;
+}
+
+.car-content h4 {
+    font-size: 1.1rem;
+    margin: 2rem 0 1rem 0;
+    color: #f5c623;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.car-content ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.car-content li {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+    opacity: 0.9;
+}
+
+.car-content li::before {
+    content: '▸';
+    color: #f5c623;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    font-size: 1.1rem;
+}
+
+.car-content li:hover {
+    color: #f5c623;
+    transform: translateX(5px);
+    transition: all 0.3s ease;
+}
+
+
+.car-content p:last-of-type {
+    background: rgba(245, 198, 35, 0.1);
+    padding: 1.5rem;
+    border-left: 4px solid #f5c623;
+    border-radius: 0.5rem;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.car-image {
+    position: relative;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .car-image img {
-    width: 100%;
-    height: 350px;
-    border-radius: 8px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 1.5rem;
+    position: relative;
+    z-index: 2;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+.car-image::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    bottom: 10%;
+    background: linear-gradient(45deg, rgba(245, 198, 35, 0.1), transparent);
+    border-radius: 1.5rem;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.car-box:hover .car-image::before {
+    opacity: 1;
+}
+
+.car-box:hover .car-image img {
+    transform: scale(1.1) rotate(2deg);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(245, 198, 35, 0.3);
+    filter: brightness(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .car-box {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem;
+    }
+    
+    .car-image {
+        height: 300px;
+        order: -1;
+    }
+}
 
 @media (max-width: 768px) {
-    .car-box {
+    .intro {
         flex-direction: column;
         text-align: center;
+        gap: 2rem;
+        padding: 2rem 1rem;
     }
-
-    .car-content, .car-image {
-        max-width: 100%;
+    
+    .navbar {
+        padding: 1rem 1.5rem;
+        flex-direction: column;
+        gap: 1rem;
     }
-
-    .car-image img {
-        width: 100%;
+    
+    .car-box {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .car-image {
+        height: 250px;
     }
 }
 
-ul{
-    padding-top: 5px;
+@media (max-width: 480px) {
+    .car-boxes {
+        padding: 0 1rem 1rem;
+    }
+    
+    .car-content h3 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Scroll animations */
+.car-boxes {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.car-box {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideInUp 0.8s ease forwards;
+}
+
+.car-box:nth-child(1) { animation-delay: 0.1s; }
+.car-box:nth-child(2) { animation-delay: 0.2s; }
+.car-box:nth-child(3) { animation-delay: 0.3s; }
+.car-box:nth-child(4) { animation-delay: 0.4s; }
+.car-box:nth-child(5) { animation-delay: 0.5s; }
+.car-box:nth-child(6) { animation-delay: 0.6s; }
+.car-box:nth-child(7) { animation-delay: 0.7s; }
+.car-box:nth-child(8) { animation-delay: 0.8s; }
+.car-box:nth-child(9) { animation-delay: 0.9s; }
+.car-box:nth-child(10) { animation-delay: 1s; }
+
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Add this to your existing CSS */
+
+.simple-footer {
+    background: #111;
+    border-top: 1px solid rgba(245, 198, 35, 0.2);
+    padding: 2rem 2rem 1.5rem;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-logo {
+    width: 40px;
+    height: 40px;
+}
+
+.footer-left p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin: 0;
+}
+
+.footer-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-right a {
+    color: #f5c623;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: opacity 0.3s ease;
+}
+
+.footer-right a:hover {
+    opacity: 0.7;
+}
+
+.footer-right span {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 1.2rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .simple-footer {
+        padding: 1.5rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-left {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
 }
